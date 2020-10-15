@@ -4,4 +4,4 @@ const foo = (name) => {
   console.log(`Hello ${name}`);
 };
 
-foo("Hello From Home");
+foo("Hello From Home 1");
