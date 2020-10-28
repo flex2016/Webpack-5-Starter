@@ -66,8 +66,8 @@ npm run build
 
 ### Plugins
 
-- [Auto Prefixer](https://github.com/postcss/autoprefixer) - Vendor prefixes by Browser
-- [CSS Nano](http://cssnano.co/)- Minifies Css
+- [`Auto Prefixer`](https://github.com/postcss/autoprefixer) - Vendor prefixes by Browser
+- [`CSS Nano`](http://cssnano.co/)- Minifies Css
 - [`clean-webpack-plugin`](https://github.com/johnagan/clean-webpack-plugin) - Remove/clean build folders
 - [`copy-webpack-plugin`](https://github.com/webpack-contrib/copy-webpack-plugin) - Copy files to build directory
 - [`html-webpack-plugin`](https://github.com/jantimon/html-webpack-plugin) - Generate HTML files from template
