@@ -4,12 +4,23 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   target: "web",
+
+  // Where webpack looks to start building the bundle
   entry: {
     index: "./src/home/js/index.js",
     about: "./src/about/js/about.js",
   },
+
+  // Where webpack outputs the assets and bundles
+  output: {
+    filename: "[name].bundle.js",
+    path: path.resolve(__dirname, "dist"),
+  },
+
+  // Determine how modules within the project are treated
   module: {
     rules: [
+      // JavaScript: Use Babel to transpile JavaScript files
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -20,6 +31,7 @@ module.exports = {
           },
         },
       },
+      // Images: Copy image files to build folder
       {
         test: /\.(png|jp(e*)g|svg)$/,
         use: [
@@ -32,6 +44,7 @@ module.exports = {
           },
         ],
       },
+      // Fonts: Copy Fonts to build folder
       {
          test: /\.(eot|woff|woff2|ttf|otf)(\?\S*)?$/,
          use: [{
@@ -48,6 +61,7 @@ module.exports = {
   },
   resolve: { extensions: [".js", ".ts"] },
   plugins: [
+    // Generates an HTML file from a template
     new HtmlWebpackPlugin({
       filename: "index.html",
       inject: true,
@@ -60,7 +74,7 @@ module.exports = {
       chunks: ["about"],
       template: path.resolve(__dirname, "src/about", "about.html"),
     }),
-
+     // Copy image files to build folder
     new CopyWebpackPlugin({
       patterns: [
         { from: "src/img", to: "assets/img" },
@@ -68,8 +82,4 @@ module.exports = {
       ],
     }),
   ],
-  output: {
-    filename: "[name].bundle.js",
-    path: path.resolve(__dirname, "dist"),
-  },
 };

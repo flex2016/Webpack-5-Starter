@@ -10,7 +10,6 @@ module.exports = merge(common, {
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
-
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
@@ -18,6 +17,7 @@ module.exports = merge(common, {
             },
           },
           "css-loader",
+          //Check postcss.config.js file for configuration
           "postcss-loader",
           "sass-loader",
 
@@ -26,7 +26,10 @@ module.exports = merge(common, {
     ],
   },
   plugins: [
+    // Removes/cleans build folders and unused assets when rebuilding
     new CleanWebpackPlugin(),
+    // Extracts CSS into minified files
+    // Note: style-loader is for development, MiniCssExtractPlugin is for production
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css",
     }),
